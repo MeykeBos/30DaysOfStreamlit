@@ -51,7 +51,10 @@ from streamlit_folium import folium_static
 # Load data
 @st.cache
 def load_data():
-    df = pd.read_csv("C:/Users/Meyke/Documents/Projecten/Streamlit_app/partially_cleaned_5.csv")
+    url= 'https://drive.google.com/file/d/1zi6RRWukdMaCCQpCXEyhRt01zIrIg4-F/view?usp=sharing'
+    url='https://drive.google.com/uc?id=' + url.split('/')[-2]
+    df = pd.read_csv(url)
+    #df = pd.read_csv("C:/Users/Meyke/Documents/Projecten/Streamlit_app/partially_cleaned_5.csv")
     
     bins = []
     labels = []
@@ -110,7 +113,7 @@ add_sidebar = st.sidebar.selectbox('test',('Analysis country','Analysis by regio
 
 # add data to the page based on selected option
 if add_sidebar == 'Analysis country':
-    #st.write('Hello, *World!* :sunglasses:')
+    st.write('Hello, *World!* :sunglasses:')
     st.header('Tanzanian Waterpumps')
     
     perc_functional = df[(df['status_group'] == 'functional')]['id'].count()/df[df['status_group'].notna()]['id'].count()*100
